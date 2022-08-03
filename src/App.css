@@ -90,17 +90,17 @@ section {
   color: var(--black);
 }
 
-.header .navbar a {
+.header .navbar .nav-link {
   font-size: 1.8rem;
   margin: 0 1rem;
   color: var(--black);
 }
 
-.header .navbar a:hover {
+.header .navbar .nav-link:hover {
   color: var(--orange);
 }
 
-.header .icons .fa-icon {
+.header .icons div {
   height: 4.5rem;
   width: 4.5rem;
   line-height: 4.5rem;
@@ -111,9 +111,10 @@ section {
   margin-left: .3rem;
   cursor: pointer;
   text-align: center;
+  display: inline-block;
 }
 
-.header .icons .fa-icon:hover {
+.header .icons div:hover {
   background: var(--orange);
   color: #fff;
 }
@@ -162,46 +163,120 @@ section {
   color: var(--orange);
 }
 
+.header .shopping-cart {
+  position: absolute;
+  top: 110%;
+  right: -110%;
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow);
+  width: 35rem;
+  background: #fff;
+}
 
+.header .shopping-cart.active {
+  right: 2rem;
+  transition: .4s linear;
+}
 
+.header .shopping-cart .box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  margin: 1rem 0;
+}
 
+.header .shopping-cart .box img {
+  height: 10rem;
+}
 
-.App {
+.header .shopping-cart .box .trash-icon {
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  cursor: pointer;
+  color: var(--light-color);
+  transform: translateY(-50%);
+}
+
+.header .shopping-cart .box .fa-trash:hover {
+  color: var(--orange);
+}
+
+.header .shopping-cart .box .content h3 {
+  color: var(--black);
+  font-size: 1.7rem;
+  padding-bottom: 1rem;
+}
+
+.header .shopping-cart .box .content span {
+  color: var(--light-color);
+  font-size: 1.6rem;
+}
+
+.header .shopping-cart .box .content .quantity {
+  padding-left: 1rem;
+}
+
+.header .shopping-cart .total {
+  font-size: 2.5rem;
+  padding: 1rem 0;
+  text-align: center;
+  color: var(--black);
+}
+
+.header .shopping-cart .btn {
+  font-size: 1.7rem;
+  color: var(--black);
+  display: block;
+  text-align: center;
+  margin: 1rem;
+}
+
+/* login form  */
+.header .login-form {
+  position: absolute;
+  top: 110%;
+  right: -110%;
+  width: 35rem;
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  border-radius: .5rem;
+  background: #fff;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header .login-form.active {
+  right: 2rem;
+  transition: .4s linear;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header .login-form h3 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: var(--black);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header .login-form .box {
+  width: 100%;
+  margin: .7rem 0;
+  background: #eee;
+  border-radius: .5rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+  color: var(--black);
+  text-transform: none;
 }
 
-.App-link {
-  color: #61dafb;
+.header .login-form p {
+  font-size: 1.4rem;
+  padding: .5rem 0;
+  color: var(--light-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.header .login-form p a {
+  color: var(--orange);
+  text-decoration: underline;
 }
