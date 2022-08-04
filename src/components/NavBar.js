@@ -42,6 +42,14 @@ export const NavBar = () => {
         setActiveMenu(false)
     }
 
+    function handleMenu(e) {
+        e.preventDefault();
+        setActiveSearch(false)
+        setActiveCart(false)
+        setActiveLogin(false)
+        setActiveMenu(!activeMenu)
+    }
+
     const removeActivedClass = () => {
         setActiveSearch(false)
         setActiveCart(false)
@@ -68,7 +76,7 @@ export const NavBar = () => {
             <Navbar.Brand href="#home">
                 <a className="header__logo"><FontAwesomeIcon icon={faApple} />Apple</a>
             </Navbar.Brand>
-            <Nav className="navbar">
+            <Nav className={`navbar ${activeMenu ? 'active' : ''}`}>
                 <Nav.Link href="#home" className="nav-link">home</Nav.Link>
                 <Nav.Link href="#features" className="nav-link">features</Nav.Link>
                 <Nav.Link href="#products" className="nav-link">products</Nav.Link>
@@ -76,7 +84,7 @@ export const NavBar = () => {
                 <Nav.Link href="#review" className="nav-link">review</Nav.Link>
             </Nav>
             <div class="icons">
-                <div id='menu-btn'>
+                <div id='menu-btn' onClick={handleMenu}>
                     <FontAwesomeIcon className='fa-icon' icon={faBars} />
                 </div>
                 <div id='search-btn' onClick={handleSearch}>
