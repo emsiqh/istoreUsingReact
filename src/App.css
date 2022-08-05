@@ -70,33 +70,32 @@ section {
 }
 
 /* navbar css */
-.header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
+nav.navbar {
+  padding: 16px 0;
+  width: 100%;
   z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem 9%;
   background: #fff;
   box-shadow: var(--box-shadow);
+}
+
+nav.navbar a.navbar-brand {
+  width: 9%;
 }
 
 .header .header__logo {
   font-size: 3.5rem;
   font-weight: bolder;
-  color: var(--black);
+  color: var(--orange);
+  text-decoration: none;
 }
 
-.header .navbar .nav-link {
+nav.navbar .navbar-nav .nav-link.navbar-link {
   font-size: 1.8rem;
   margin: 0 1rem;
   color: var(--black);
 }
 
-.header .navbar .nav-link:hover {
+nav.navbar .navbar-nav .nav-link.navbar-link:hover {
   color: var(--orange);
 }
 
@@ -281,55 +280,6 @@ section {
   text-decoration: underline;
 }
 
-/* media queries  */
-
-@media (max-width:991px) {
-
-  html {
-    font-size: 55%;
-  }
-
-  .header {
-    padding: 2rem;
-  }
-
-  section {
-    padding: 2rem;
-  }
-}
-
-@media (max-width:768px) {
-
-  #menu-btn {
-    display: inline-block;
-  }
-
-  .header .search-form {
-    width: 90%;
-  }
-
-  .header .navbar {
-    position: absolute;
-    top: 110%;
-    right: -110%;
-    width: 30rem;
-    box-shadow: var(--box-shadow);
-    border-radius: .5rem;
-    background: #fff;
-  }
-
-  .header .navbar.active {
-    right: 2rem;
-    transition: .4s linear;
-  }
-
-  .header .navbar .nav-link {
-    font-size: 2rem;
-    margin: 2rem 2.5rem;
-    display: block;
-  }
-}
-
 /* ------------ home ---------------- */
 .home {
   display: flex;
@@ -367,6 +317,39 @@ section {
 .home .content .btn {
   border: .2rem solid #fff;
   color: #fff;
+}
+
+/* ------- feature ------ */
+.features .box {
+  padding: 3rem 2rem;
+  background: #fff;
+  outline: var(--outline);
+  outline-offset: -1rem;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+.features .box:hover {
+  outline: var(--outline-hover);
+  outline-offset: 0rem;
+}
+
+.features .box img {
+  margin: 1rem 0;
+  height: 15rem;
+}
+
+.features .box h3 {
+  font-size: 2.5rem;
+  line-height: 1.8;
+  color: var(--black);
+}
+
+.features .box p {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: var(--light-color);
+  padding: 1rem 0;
 }
 
 @media (max-width:450px) {

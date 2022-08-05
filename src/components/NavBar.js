@@ -11,12 +11,14 @@ import Form from 'react-bootstrap/Form';
 import product1 from "../assets/img/iphone-xi-xanhla-600x600.jpg"
 import product2 from "../assets/img/iphone-12-mini-do-600x600.jpeg"
 import product3 from "../assets/img/iphone-12-tim-1-600x600.jpg"
+import { Container } from 'react-bootstrap';
 
 export const NavBar = () => {
     const [activeSearch, setActiveSearch] = useState(false)
     const [activeCart, setActiveCart] = useState(false)
     const [activeLogin, setActiveLogin] = useState(false)
     const [activeMenu, setActiveMenu] = useState(false)
+    const [activeLink, setActiveLink] = useState('home');
 
     function handleSearch(e) {
         e.preventDefault();
@@ -71,32 +73,44 @@ export const NavBar = () => {
         { name: "iphone 12", imgUrl: product3, price: "4.99$", quantity: 1 },
     ]
 
+    const onUpdateActiveLink = (value) => {
+        setActiveLink(value);
+    }
+
     return (
         <Navbar expand="md" className="header">
-            <Navbar.Brand href="#home">
-                <a className="header__logo"><FontAwesomeIcon icon={faApple} />Apple</a>
-            </Navbar.Brand>
-            <Nav className={`navbar ${activeMenu ? 'active' : ''}`}>
-                <Nav.Link href="#home" className="nav-link">home</Nav.Link>
-                <Nav.Link href="#features" className="nav-link">features</Nav.Link>
-                <Nav.Link href="#products" className="nav-link">products</Nav.Link>
-                <Nav.Link href="#categories" className="nav-link">categories</Nav.Link>
-                <Nav.Link href="#review" className="nav-link">review</Nav.Link>
-            </Nav>
-            <div class="icons">
-                <div id='menu-btn' onClick={handleMenu}>
-                    <FontAwesomeIcon className='fa-icon' icon={faBars} />
-                </div>
-                <div id='search-btn' onClick={handleSearch}>
-                    <FontAwesomeIcon className='fa-icon' icon={faSearch} />
-                </div>
-                <div id='cart-btn' onClick={handleCart}>
-                    <FontAwesomeIcon className='fa-icon' icon={faShoppingCart} />
-                </div>
-                <div id='user-btn' onClick={handleLogin}>
-                    <FontAwesomeIcon className='fa-icon' icon={faUser} />
-                </div>
-            </div>
+            <Container>
+                <Navbar.Brand href="#home">
+                    <a className="header__logo"><FontAwesomeIcon icon={faApple} /></a>
+                </Navbar.Brand>
+                <Navbar.Toggle>
+                    <span class="navbar-toggler-icon"></span>
+                </Navbar.Toggle>
+                <Navbar.Collapse>
+                    <Nav className="ms-auto">
+                        <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>home</Nav.Link>
+                        <Nav.Link href="#features" className={activeLink === 'features' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('features')}>features</Nav.Link>
+                        <Nav.Link href="#products" className={activeLink === 'products' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('products')}>products</Nav.Link>
+                        <Nav.Link href="#categories" className={activeLink === 'categories' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('categories')}>categories</Nav.Link>
+                        <Nav.Link href="#review" className={activeLink === 'review' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('review')}>review</Nav.Link>
+                    </Nav>
+                    <div class="icons">
+                        <div id='menu-btn' onClick={handleMenu}>
+                            <FontAwesomeIcon className='fa-icon' icon={faBars} />
+                        </div>
+                        <div id='search-btn' onClick={handleSearch}>
+                            <FontAwesomeIcon className='fa-icon' icon={faSearch} />
+                        </div>
+                        <div id='cart-btn' onClick={handleCart}>
+                            <FontAwesomeIcon className='fa-icon' icon={faShoppingCart} />
+                        </div>
+                        <div id='user-btn' onClick={handleLogin}>
+                            <FontAwesomeIcon className='fa-icon' icon={faUser} />
+                        </div>
+                    </div>
+                </Navbar.Collapse>
+            </Container>
+
             <Form className={`search-form ${activeSearch ? 'active' : ''}`}>
                 <Form.Control type="search" id="search-box" placeholder="search here..." />
                 <Form.Label className='search-label'>
