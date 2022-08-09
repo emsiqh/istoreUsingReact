@@ -11,7 +11,7 @@ import Form from 'react-bootstrap/Form';
 import product1 from "../assets/img/iphone-xi-xanhla-600x600.jpg"
 import product2 from "../assets/img/iphone-12-mini-do-600x600.jpeg"
 import product3 from "../assets/img/iphone-12-tim-1-600x600.jpg"
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 
 export const NavBar = () => {
     const [activeSearch, setActiveSearch] = useState(false)
@@ -134,7 +134,7 @@ export const NavBar = () => {
                     })
                 }
                 <div className="total">Total: 19.69$</div>
-                <a href="#" className="btn">Checkout</a>
+                <a href="#" className="pri-btn">Checkout</a>
             </div>
             <Form className={`login-form ${activeLogin ? 'active' : ''}`}>
                 <h3>Login now</h3>
@@ -142,8 +142,7 @@ export const NavBar = () => {
                 <Form.Control type="password" className="box" placeholder="Enter your password" />
                 <p>forget your password <a href="#">click here</a></p>
                 <p>don't have an account <a href="#">create now</a></p>
-                <Form.Control type="submit" className="btn" value="Login" />
-
+                <a href="#" className="pri-btn">Login now</a>
             </Form>
         </Navbar>
     )
