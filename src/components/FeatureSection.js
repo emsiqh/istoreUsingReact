@@ -39,7 +39,7 @@ export const FeatureSection = () => {
                                     <img src={feature.imgUrl} alt={`${feature.name}`} />
                                     <h3>{feature.name}</h3>
                                     <p>{feature.description}</p>
-                                    <a href='#' className='btn'>read more</a>
+                                    <a href='#' className='pri-btn'>read more</a>
                                 </Col>
                             )
                         })

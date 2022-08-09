@@ -342,14 +342,14 @@ nav.navbar .navbar-nav .nav-link.navbar-link:hover {
   padding: 3rem 2rem;
   background: #fff;
   outline: var(--outline);
-  outline-offset: -1rem;
+  outline-offset: -2rem;
   text-align: center;
   box-shadow: var(--box-shadow);
 }
 
 .features .box:hover {
   outline: var(--outline-hover);
-  outline-offset: 0rem;
+  outline-offset: -1rem;
 }
 
 .features .box img {
