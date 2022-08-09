@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavBar } from './components/NavBar';
 import { HomeSection } from './components/HomeSection';
 import { FeatureSection } from './components/FeatureSection';
+import { ProductSection } from './components/ProductSection';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <NavBar />
       <HomeSection />
       <FeatureSection />
+      <ProductSection />
     </div>
   );
 }
