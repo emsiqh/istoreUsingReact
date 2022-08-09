@@ -313,17 +313,17 @@ nav.navbar .navbar-nav .nav-link.navbar-link:hover {
 }
 
 /* ------------ home ---------------- */
-.home .content h3 {
+.carousel .content h3 {
   color: var(--black);
   font-size: 3rem;
 }
 
-.home .content h3 span {
+.carousel .content h3 span {
   color: var(--orange);
   text-transform: uppercase;
 }
 
-.home .content p {
+.carousel .content p {
   margin-bottom: 0;
   color: var(--light-color);
   font-size: 2rem;
@@ -331,7 +331,7 @@ nav.navbar .navbar-nav .nav-link.navbar-link:hover {
   line-height: 1.8;
 }
 
-.home .content .pri-btn {
+.carousel .content .pri-btn {
   margin-bottom: 2rem;
   border: .2rem solid #fff;
   color: #fff;
