@@ -78,7 +78,7 @@ export const NavBar = () => {
     }
 
     return (
-        <Navbar expand="md" className="header">
+        <Navbar expand="md" className="header" fixed='top'>
             <Container>
                 <Navbar.Brand href="#home">
                     <a className="header__logo"><FontAwesomeIcon icon={faApple} /></a>

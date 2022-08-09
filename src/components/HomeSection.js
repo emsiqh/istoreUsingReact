@@ -21,7 +21,7 @@ export const HomeSection = () => {
 
 
     return (
-        <Carousel interval={2000}>
+        <Carousel interval={2000} id="home">
             {
                 slideData.map((slide, index) => {
                     return (
