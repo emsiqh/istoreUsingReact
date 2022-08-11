@@ -31,9 +31,6 @@ export const CategorySection = () => {
                             )
                         })
                     }
-                    <Col>
-
-                    </Col>
                 </Row>
             </Container>
         </section>
