@@ -4,6 +4,7 @@ import { NavBar } from './components/NavBar';
 import { HomeSection } from './components/HomeSection';
 import { FeatureSection } from './components/FeatureSection';
 import { ProductSection } from './components/ProductSection';
+import { CategorySection } from './components/CategorySection';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <HomeSection />
       <FeatureSection />
       <ProductSection />
+      <CategorySection />
     </div>
   );
 }
