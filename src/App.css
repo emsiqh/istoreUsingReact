@@ -421,13 +421,13 @@ nav.navbar .navbar-nav .nav-link.navbar-link:hover {
   background: #fff;
   box-shadow: var(--box-shadow);
   outline: var(--outline);
-  outline-offset: -1rem;
+  outline-offset: -2rem;
   text-align: center;
 }
 
 .categories .box-container .box:hover {
   outline: var(--outline-hover);
-  outline-offset: 0rem;
+  outline-offset: -1rem;
 }
 
 .categories .box-container .box img {
