@@ -1,40 +1,26 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import product1 from '../assets/img/iphone-se-2020-trang-600x600-600x600.jpg'
-import product2 from '../assets/img/iphone-12-mini-do-600x600.jpeg'
-import product3 from '../assets/img/iphone-13-pro-max-graphite-600x600.jpg'
-import product4 from '../assets/img/iphone-13-mini-pink-1-600x600.jpg'
-import { StarFill, StarHalf } from 'react-bootstrap-icons'
+import { StarFill, StarHalf } from 'react-bootstrap-icons';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const ProductSection = () => {
-    // call api later
-    const products = [
-        {
-            name: 'iphone se 2020',
-            imgUrl: product1,
-            price: 10.99,
-            star: 5
-        },
-        {
-            name: 'iphone 12 mini',
-            imgUrl: product2,
-            price: 10.99,
-            star: 5
-        },
-        {
-            name: 'iphone 13 pro max',
-            imgUrl: product3,
-            price: 10.99,
-            star: 5
-        },
-        {
-            name: 'iphone 13 mini',
-            imgUrl: product4,
-            price: 10.99,
-            star: 5
-        }
-    ]
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchAllProducts = async () => {
+            try {
+                const res = await axios.get('http://localhost:8800/products');
+                setProducts(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        fetchAllProducts();
+    }, [])
+
 
     return (
         <section className="products" id="products">
@@ -42,12 +28,12 @@ export const ProductSection = () => {
                 <h1 className="heading"> our <span>products</span> </h1>
                 <Row className="product-items" xl={3} md={2} sm={1} xs={1}>
                     {
-                        products.map((product, index) => {
+                        products.map((product) => {
                             return (
-                                <Col className='box' key={index}>
-                                    <img src={product.imgUrl} alt={product.name} />
+                                <Col className='box' key={product.id}>
+                                    <img src={product.cover} alt={product.name} />
                                     <h3>{product.name}</h3>
-                                    <div className="price">{product.price}$</div>
+                                    <div className="price">{`${product.minp} - ${product.maxp}$`}</div>
                                     <div className="stars">
                                         <StarFill />
                                         <StarFill />

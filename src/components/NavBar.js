@@ -1,17 +1,9 @@
 import { useState, useEffect } from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faBars, faSearch, faShoppingCart, faUser, faTrash
-} from '@fortawesome/free-solid-svg-icons'
-import { faApple } from '@fortawesome/free-brands-svg-icons'
-import Form from 'react-bootstrap/Form';
-// images import
-import product1 from "../assets/img/iphone-xi-xanhla-600x600.jpg"
-import product2 from "../assets/img/iphone-12-mini-do-600x600.jpeg"
-import product3 from "../assets/img/iphone-12-tim-1-600x600.jpg"
-import { Button, Container } from 'react-bootstrap';
+import { Container, Form, Nav, Navbar } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faApple } from '@fortawesome/free-brands-svg-icons';
+import { navLinks, navBtns, products } from '../constants';
 
 export const NavBar = () => {
     const [activeSearch, setActiveSearch] = useState(false)
@@ -20,37 +12,28 @@ export const NavBar = () => {
     const [activeMenu, setActiveMenu] = useState(false)
     const [activeLink, setActiveLink] = useState('home');
 
-    function handleSearch(e) {
-        e.preventDefault();
-        setActiveSearch(!activeSearch)
-        setActiveCart(false)
-        setActiveLogin(false)
-        setActiveMenu(false)
-    }
+    const [enabled, setEnabled] = useState(false);
+    const handleActive = (value) => {
+        let act = 'active' + value;
+        const actions = {
+            activeSearch: setActiveSearch,
+            activeCart: setActiveCart,
+            activeLogin: setActiveLogin,
+            activeMenu: setActiveMenu
+        };
+        for (let key in actions) {
+            if (actions.hasOwnProperty(key)) {
+                if (act === key) {
+                    actions[key](!enabled);
+                    setEnabled(!enabled);
+                }
+                else {
+                    actions[key](false);
+                }
+            }
 
-    function handleCart(e) {
-        e.preventDefault();
-        setActiveSearch(false)
-        setActiveCart(!activeCart)
-        setActiveLogin(false)
-        setActiveMenu(false)
-    }
-
-    function handleLogin(e) {
-        e.preventDefault();
-        setActiveSearch(false)
-        setActiveCart(false)
-        setActiveLogin(!activeLogin)
-        setActiveMenu(false)
-    }
-
-    function handleMenu(e) {
-        e.preventDefault();
-        setActiveSearch(false)
-        setActiveCart(false)
-        setActiveLogin(false)
-        setActiveMenu(!activeMenu)
-    }
+        }
+    };
 
     const removeActivedClass = () => {
         setActiveSearch(false)
@@ -67,12 +50,6 @@ export const NavBar = () => {
         return () => window.removeEventListener('scroll', onScroll);
     }, [])
 
-    const products = [
-        { name: "iphone 11", imgUrl: product1, price: "4.99$", quantity: 1 },
-        { name: "iphone 12 mini", imgUrl: product2, price: "4.99$", quantity: 1 },
-        { name: "iphone 12", imgUrl: product3, price: "4.99$", quantity: 1 },
-    ]
-
     const onUpdateActiveLink = (value) => {
         setActiveLink(value);
     }
@@ -84,29 +61,26 @@ export const NavBar = () => {
                     <a className="header__logo"><FontAwesomeIcon icon={faApple} /></a>
                 </Navbar.Brand>
                 <Navbar.Toggle>
-                    <span class="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"></span>
                 </Navbar.Toggle>
                 <Navbar.Collapse>
                     <Nav className="ms-auto">
-                        <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>home</Nav.Link>
-                        <Nav.Link href="#features" className={activeLink === 'features' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('features')}>features</Nav.Link>
-                        <Nav.Link href="#products" className={activeLink === 'products' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('products')}>products</Nav.Link>
-                        <Nav.Link href="#categories" className={activeLink === 'categories' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('categories')}>categories</Nav.Link>
-                        <Nav.Link href="#review" className={activeLink === 'review' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('review')}>review</Nav.Link>
+                        {
+                            navLinks.map((link) =>
+                                <Nav.Link key={link.id} href={`#${link.href}`} className={activeLink === `${link.href}` ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink(link.href)}>{link.href}</Nav.Link>
+                            )
+                        }
                     </Nav>
-                    <div class="icons">
-                        <div id='menu-btn' onClick={handleMenu}>
-                            <FontAwesomeIcon className='fa-icon' icon={faBars} />
-                        </div>
-                        <div id='search-btn' onClick={handleSearch}>
-                            <FontAwesomeIcon className='fa-icon' icon={faSearch} />
-                        </div>
-                        <div id='cart-btn' onClick={handleCart}>
-                            <FontAwesomeIcon className='fa-icon' icon={faShoppingCart} />
-                        </div>
-                        <div id='user-btn' onClick={handleLogin}>
-                            <FontAwesomeIcon className='fa-icon' icon={faUser} />
-                        </div>
+                    <div className="icons">
+                        {
+                            navBtns.map((button, index) => {
+                                return (
+                                    <div key={index} id={`${button.name}-btn`} onClick={() => handleActive(button.action)}>
+                                        <FontAwesomeIcon className='fa-icon' icon={button.icon} />
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </Navbar.Collapse>
             </Container>
